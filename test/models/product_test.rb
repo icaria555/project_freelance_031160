@@ -83,9 +83,11 @@ class ProductTest < ActiveSupport::TestCase
    test "quantity should be integer more than zero" do
       @product.price = "text"
       assert_not @product.valid?
-      
+      @product.price = -0.5
       assert_not @product.valid?
-      
+      @product.price = 0.5
+      assert_not @product.valid?
+
    end
    
    # ==========================================================
