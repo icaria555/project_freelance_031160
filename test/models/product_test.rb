@@ -36,7 +36,6 @@ class ProductTest < ActiveSupport::TestCase
          :pv => 0,
          :quantity => 0,
          :unit => "112")
-      
 
       assert_not @product2.valid?
    end
@@ -45,42 +44,57 @@ class ProductTest < ActiveSupport::TestCase
    # test amount price
    # ==========================================================
    
-   test "price should exists" do
+   test "price should be exists" do
       @product.price = nil
       assert_not @product.valid?
    end
 
    
-   test "price should unique" do
-
+   test "price should be number" do
+      @product.price = "text"
+      assert_not @product.valid?
    end
    
    # ==========================================================
-   # test amount price
+   # test amount pv
    # ==========================================================
    
-   test "pv should exists" do
-      @product.price = nil
+   test "pv should be exists" do
+      @product.pv = nil
       assert_not @product.valid?
    end
 
    
    test "pv should unique" do
-
+      @product.pv = "text"
+      assert_not @product.valid?
    end
    
    # ==========================================================
-   # test amount price
+   # test amount quantity
    # ==========================================================
    
-   test "quantity should exists" do
+   test "quantity should be exists" do
       @product.price = nil
       assert_not @product.valid?
    end
 
    
-   test "quantity should unique" do
-
+   test "quantity should be integer more than zero" do
+      @product.price = "text"
+      assert_not @product.valid?
+      
+      assert_not @product.valid?
+      
    end
    
+   # ==========================================================
+   # test amount unit
+   # ==========================================================
+   
+   test "unit should be exists" do
+      @product.price = nil
+      assert_not @product.valid?
+   end
+
 end
