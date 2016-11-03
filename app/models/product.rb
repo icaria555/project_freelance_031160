@@ -1,7 +1,6 @@
 class Product < ApplicationRecord
   attr_accessor :name, :description, :price, :pv, :quantity, :unit
-  belongs_to :orderproduct
-  
+
   validates :name, :presence => true, :uniqueness => { case_sensitive: false }
   validates :price, :presence => true, :numericality => true
   validates :pv, :presence => true, :numericality => true
