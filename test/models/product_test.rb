@@ -9,6 +9,7 @@ class ProductTest < ActiveSupport::TestCase
          :pv => 0,
          :quantity => 0,
          :unit => "112")
+      
    end
   
    test "Default Object should valid" do
@@ -25,7 +26,8 @@ class ProductTest < ActiveSupport::TestCase
    end
 
    
-   test "name should unique" do
+   test "name should be unique" do
+      @product.save
       print @product.name
       @product2 = Product.new(
          :name => "name1",
@@ -34,12 +36,12 @@ class ProductTest < ActiveSupport::TestCase
          :pv => 0,
          :quantity => 0,
          :unit => "112")
-      @product2.save
-      print @product2.name
-      assert_not @product2.save.valid?
+      
+
+      assert_not @product2.valid?
    end
    
-      # ==========================================================
+   # ==========================================================
    # test amount price
    # ==========================================================
    
@@ -50,6 +52,34 @@ class ProductTest < ActiveSupport::TestCase
 
    
    test "price should unique" do
+
+   end
+   
+   # ==========================================================
+   # test amount price
+   # ==========================================================
+   
+   test "pv should exists" do
+      @product.price = nil
+      assert_not @product.valid?
+   end
+
+   
+   test "pv should unique" do
+
+   end
+   
+   # ==========================================================
+   # test amount price
+   # ==========================================================
+   
+   test "quantity should exists" do
+      @product.price = nil
+      assert_not @product.valid?
+   end
+
+   
+   test "quantity should unique" do
 
    end
    
