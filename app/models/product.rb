@@ -1,5 +1,4 @@
 class Product < ApplicationRecord
-
   validates :name, :presence => true, :uniqueness => { case_sensitive: false }
   validates :price, :presence => true, :numericality => true
   validates :pv, :presence => true, :numericality => true

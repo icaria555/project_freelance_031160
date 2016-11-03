@@ -9,7 +9,6 @@ class ProductTest < ActiveSupport::TestCase
          :pv => 0,
          :quantity => 0,
          :unit => "112")
-      
    end
   
    test "Default Object should valid" do
