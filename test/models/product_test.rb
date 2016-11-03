@@ -24,7 +24,6 @@ class ProductTest < ActiveSupport::TestCase
       @product.name = nil
       assert_not @product.valid?
    end
-
    
    test "name should be unique" do
       @product.save
@@ -48,7 +47,6 @@ class ProductTest < ActiveSupport::TestCase
       @product.price = nil
       assert_not @product.valid?
    end
-
    
    test "price should be number" do
       @product.price = "text"
@@ -63,7 +61,6 @@ class ProductTest < ActiveSupport::TestCase
       @product.pv = nil
       assert_not @product.valid?
    end
-
    
    test "pv should unique" do
       @product.pv = "text"
@@ -79,15 +76,13 @@ class ProductTest < ActiveSupport::TestCase
       assert_not @product.valid?
    end
 
-   
    test "quantity should be integer more than zero" do
-      @product.price = "text"
+      @product.quantity = "text"
       assert_not @product.valid?
-      @product.price = -0.5
+      @product.quantity = -0.5
       assert_not @product.valid?
-      @product.price = 0.5
+      @product.quantity = float(0.5)
       assert_not @product.valid?
-
    end
    
    # ==========================================================
@@ -98,5 +93,4 @@ class ProductTest < ActiveSupport::TestCase
       @product.price = nil
       assert_not @product.valid?
    end
-
 end
