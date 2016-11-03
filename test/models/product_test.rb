@@ -81,7 +81,7 @@ class ProductTest < ActiveSupport::TestCase
       assert_not @product.valid?
       @product.quantity = -0.5
       assert_not @product.valid?
-      @product.quantity = float(0.5)
+      @product.quantity = 0.5
       assert_not @product.valid?
    end
    
