@@ -33,6 +33,17 @@ class OrderproductTest < ActiveSupport::TestCase
   test "orderproduct.order should equal to order" do
       assert @orderproduct.order.purchaser_id == @order.purchaser_id
   end
+  
+  test "product should be exists" do
+    @orderproduct.product = nil
+    assert_not @orderproduct.valid?
+  end
+  
+  test "order should be exists" do
+    @orderproduct.order = nil
+    assert_not @orderproduct.valid?
+  end
+  
   # ==========================================================
   # test amount quantity
   # ==========================================================
