@@ -2,7 +2,6 @@ require 'test_helper'
 
 class OrderTest < ActiveSupport::TestCase
   
-
   def setup
     @user = User.new( :id_name => "bob")
     @user.save!

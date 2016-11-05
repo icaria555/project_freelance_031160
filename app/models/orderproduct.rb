@@ -1,7 +1,7 @@
-class Order < ApplicationRecord
-  belongs_to :user
-  has_many :orderproduct
-  has_many :products, through: :orderproduct
+class Orderproduct < ApplicationRecord
+  belongs_to :order
+  belongs_to :product
+  
   after_initialize :default_values
   
   def default_values
@@ -9,8 +9,7 @@ class Order < ApplicationRecord
       self.total_pv = 0 if self.total_pv.nil?
   end
   
-  validates :purchaser_id, :presence => true
-  validates :saler_id, :presence => true
+  validates :quantity, :presence => true, :numericality => { only_integer: true, greater_than_or_equal_to: 0 }
   validates :total_price, :presence => true, :numericality => true
   validates :total_pv, :presence => true, :numericality => true
 end
