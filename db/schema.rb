@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106125909) do
+ActiveRecord::Schema.define(version: 20161107125035) do
 
   create_table "amphurs", force: :cascade do |t|
     t.integer  "province_id"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 20161106125909) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["province_id"], name: "index_amphurs_on_province_id"
+  end
+
+  create_table "district_zipcodes", force: :cascade do |t|
+    t.integer  "district_id"
+    t.integer  "zipcode_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["district_id"], name: "index_district_zipcodes_on_district_id"
+    t.index ["zipcode_id"], name: "index_district_zipcodes_on_zipcode_id"
   end
 
   create_table "districts", force: :cascade do |t|
@@ -78,6 +87,12 @@ ActiveRecord::Schema.define(version: 20161106125909) do
 
   create_table "users", force: :cascade do |t|
     t.string   "id_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "zipcodes", force: :cascade do |t|
+    t.string   "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
