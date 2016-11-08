@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161107125035) do
+ActiveRecord::Schema.define(version: 20161108142514) do
 
   create_table "amphurs", force: :cascade do |t|
     t.integer  "province_id"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20161107125035) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "latitude"
+    t.string   "longitude"
     t.index ["amphur_id"], name: "index_districts_on_amphur_id"
   end
 
@@ -85,10 +87,27 @@ ActiveRecord::Schema.define(version: 20161107125035) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "id_name"
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "id_name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "province_id"
+    t.integer  "amphur_id"
+    t.integer  "district_id"
+    t.integer  "zipcode_id"
+    t.integer  "role_id"
+    t.index ["amphur_id"], name: "index_users_on_amphur_id"
+    t.index ["district_id"], name: "index_users_on_district_id"
+    t.index ["province_id"], name: "index_users_on_province_id"
+    t.index ["role_id"], name: "index_users_on_role_id"
+    t.index ["zipcode_id"], name: "index_users_on_zipcode_id"
   end
 
   create_table "zipcodes", force: :cascade do |t|
